@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-text-color: #183b56;
+    --secondary-text-color: #71a0c4;
+    --accent-color: #1ad3d3;
+    --accent-color-dark: #0e46ad;
+}
+
+body{
+ font-family: "Poppins",sans-serif;  
+ color: var(primary-text-color); 
+}
+p{
+    font-family: "Robooto",sans-serif;
+    color: var(--secondary-text-color);
+    line-height: 1.4rem;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.flex{
+    display: flex;
+}
+.container{
+    max-width: 1180px;
+    margin-inline: auto;
+}
+nav{
+    background-color: #efe5e5;
+    box-shadow: 0 0 4px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+.main-nav{
+    justify-content: space-between;
+    padding-block: 8px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.linkSearch{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.nav-item.active{
+    color: var(--accent-color);
+}
+.company-logo img{
+    width: 80px;
+    /* margin: 0; */
+}
+.list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+.nav-links ul{
+    gap: 16px;
+}
+.hover-link{
+    cursor: pointer;
+}
+.hover-link:active{
+    color: red;
+}
+.search-bar{
+    height: 32px;
+    gap: 8px;
+}
+.news-input{
+    width: 200px;
+    height: 100%;
+    padding-inline: 12px;
+    border-radius: 4px ;
+    border: 2px solid rgb(77, 193, 213);
+    font-family: "Robooto",sans-serif;
+
+}
+.search-button{
+    background-color: var(--accent-color);
+    color: white;
+    padding:8px 24px;
+    margin-right: 3px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Robooto",sans-serif;
+
+}
+.search-button:hover{
+    background-color:var(--accent-color-dark)
+}
+
+main{
+    padding-block: 20px;
+    margin-top: 80px;
+}
+.cards-container{
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    align-items: start;
+
+}
+.card{
+    width:360px;
+    min-height: 400px;
+    box-shadow: 0 0 4px #d4ecff;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.card:hover{
+    box-shadow: 1px 1px 8px #bbccea;
+    background-color: #f9fdff;
+    transform: translateY(-2px);
+}
+.card-header img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.card-content{
+    padding: 12px;
+}
+.news-source{
+    margin-block: 12px;
+}
+.nav-item{
+    gap: 100px;
+
+}
+
+        /* Media queries for responsive design */
+        @media (max-width: 768px) {
+            .main-nav {
+                /* flex-direction: column; */
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+            }
+
+            .linkSearch{
+                display: grid;
+                grid-template-columns: 1fr;
+                /* grid-template-rows: 1fr 2fr; */
+            }
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .company-logo {
+                /* width: 20%; */
+            }
+
+            .search-bar {
+                flex-direction: row;
+                width: 50%;
+                /* Ensure the search bar takes the full width of the container */
+                gap: 8px;
+                padding: 2px;
+                /* Add some padding to make it look better */
+            }
+
+            .news-input {
+                flex: 1;
+                /* Allow the input to take up the available space */
+                min-width: 150px;
+                /* Set a minimum width to ensure usability */
+            }
+
+            .search-button {
+                width: auto;
+                /* Ensure the button adjusts its size */
+                flex: 0 0 auto;
+                /*Prevent the button from shrinking*/
+            }
+
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+                /* Add spacing between cards */
+            }
+
+            body {
+                font-size: 14px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .card-content {
+                padding: 8px;
+            }
+
+            .news-input {
+                padding-inline: 8px;
+            }
+
+            .list {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-nav {
+                padding-block: 16px;
+            }
+
+            .nav-links ul {
+                gap: 4px;
+            }
+
+            .search-bar {
+                gap: 4px;
+                padding: 2px;
+                height: 80%;
+                /* Ensure the search bar is padded nicely */
+            }
+
+            .news-input {
+                padding-inline: 8px;
+            }
+
+            .search-button {
+                width: auto;
+                /* Ensure the button width adjusts */
+                padding: 8px 16px;
+            }
+
+            .company-logo {
+                width: 20%;
+            }
+
+            .card {
+                margin-bottom: 16px;
+                /* Reduce spacing for very small screens */
+            }
+
+            body {
+                font-size: 12px;
+            }
+
+            p {
+                font-size: 10px;
+            }
+
+            .card-content {
+                padding: 4px;
+            }
+
+            .news-input {
+                padding-inline: 4px;
+            }
+        }
+
+        /* Styles for screens smaller than 360px */
+        @media (max-width: 360px) {
+            .main-nav {
+                /* flex-direction: column;
+                align-items: flex-start; */
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                height: 90px;
+                margin-top: 0px;
+            }
+            .linkSearch{
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+            }
+            .nav-links ul {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .nav-links ul li {
+                width: 100%;
+                padding: 8px 0;
+            }
+
+            .search-bar {
+                /* flex-direction: column; */
+                align-items: center;
+                /* justify-content: center; */
+                /* width: 100%; */
+                gap: 3px;
+                padding: 0;
+                height: 90%;
+            }
+
+            .news-input {
+                width: 100%;
+                height: 70%;
+                padding-inline: 6px;
+            }
+
+            .search-button {
+                width: 70%;
+                padding: 4px;
+            }
+            .company-logo img{
+                width: 70px;
+                margin: 4px;
+                /* margin: 0; */
+            }
+            .list{
+                height: 5px;
+            }
+            nav{
+                top: -10px;
+                bottom: 595px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" class="company-logo" onclick="reload()">
+                <img src="https://i.postimg.cc/d14K5H3R/globalnews-logo.png" alt="news">
+            </a>
+            
+            <div class="linkSearch">
+                <div class="nav-links">
+                    <ul class="flex list">
+                        <li class="hover-link nav-item" id="cricket news" onclick="onNavItemClick('cricket news')">Cricket</li>
+                        <li class="hover-link nav-item" id="war scenario" onclick="onNavItemClick('war scenario')">War</li>
+                        <li class="hover-link nav-item" id="politics" onclick="onNavItemClick('politics')">Politics</li>
+                    </ul>
+                </div>
+                <div class="search-bar flex">
+                    <input type="text" class="news-input" id="search-text" placeholder="e.g. science">
+                    <button class="search-button" id="search-button">Search</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="cards-container container flex" id="cards-container">
+
+        </div>
+    </main>
+
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="news image" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is title</h3>
+                <h6 class="news-source" id="news-source">End gadget 26/07/2023</h6>
+                <p class="news-desc" id="news-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+                    perferendis delectus consequuntur dignissimos dolor dicta assumenda maiores nulla voluptatibus
+                    eligendi?</p>
+            </div>
+        </div>
+    </template>
+    <script>
+        const api_key = "d38a140435c345b98f269f0a48abafb3";
+        const url = "https://newsapi.org/v2/everything?q=";
+
+        window.addEventListener("load", () => fetchNews("India"));
+
+        function reload() {
+            window.location.reload();
+        }
+
+        async function fetchNews(query) {
+            const res = await fetch(`${url}${query}&apiKey=${api_key}`)
+            const data = await res.json();
+            bindData(data.articles);
+        }
+        function bindData(articles) {
+            const cardsContainer = document.getElementById('cards-container');
+            const newsCardTemplate = document.getElementById('template-news-card');
+            cardsContainer.innerHTML = '';
+            articles.forEach(article => {
+                if (!article.urlToImage) return;
+                const cardClone = newsCardTemplate.content.cloneNode(true);
+                fillDataInCard(cardClone, article);
+                cardsContainer.appendChild(cardClone);
+            })
+        }
+
+        function fillDataInCard(cardClone, article) {
+            const newsImg = cardClone.querySelector('#news-img');
+            const newsTitle = cardClone.querySelector('#news-title');
+            const newsSource = cardClone.querySelector('#news-source');
+            const newsDesc = cardClone.querySelector('#news-desc');
+            newsImg.src = article.urlToImage;
+            newsTitle.innerHTML = article.title;
+            newsDesc.innerHTML = article.description;
+
+            const date = new Date(article.publishedAt).toLocaleString("en-Us", { timezone: "Asia/Jakarta" });
+
+            newsSource.innerHTML = `${article.source.name} • ${date}`;
+
+            cardClone.firstElementChild.addEventListener("click", () => {
+                window.open(article.url, "_blank")
+            })
+        }
+
+        let curSelectedNav = null;
+
+        function onNavItemClick(id) {
+            fetchNews(id);
+            const navItem = document.getElementById(id);
+            curSelectedNav?.classList.remove("active");
+            curSelectedNav = navItem;
+            curSelectedNav.classList.add("active");
+        }
+        const searchButton = document.getElementById('search-button');
+        const searchText = document.getElementById("search-text");
+        searchButton.addEventListener('click', () => {
+            const query = searchText.value;
+            if (!query) return;
+            fetchNews(query);
+            curSelectedNav?.classList.remove("active");
+            curSelectedNav = null;
+        })
+    </script>
+</body>
+
+</html>
